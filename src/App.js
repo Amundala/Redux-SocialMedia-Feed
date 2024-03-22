@@ -9,24 +9,28 @@ import {
 import { Provider } from 'react-redux';
 import store from './app/store'
 import AddPostForm from './features/posts/AddPostForm';
+import { SinglePostPage } from './features/posts/SinglePostPage';
+import { Navbar } from './app/Navbar';
 
 function App() {
   return (
     <>
       <Router>
+        <Navbar />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <React.Fragment>
-                <Provider store={store}>
+          <Provider store={store}>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <React.Fragment>
                   <AddPostForm />
                   < PostList />
-                </Provider>
-              </React.Fragment>
-            )}
-          />
+                </React.Fragment>
+              )}
+            />
+            <Route exact path="/posts/:postId" component={SinglePostPage} />
+          </Provider>
           < Redirect to="/" />
         </Switch>
       </Router>

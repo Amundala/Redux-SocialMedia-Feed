@@ -1,22 +1,24 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-
-function PostList() {
+const PostList = () => {
   const posts = useSelector(state => state.posts)
-
-  const renderedPosts = posts.map(post => (
-    <div className='' id={post.id}>
+  const renderedPost = posts.map(post => (
+    <article key={post.id}>
       <h3>{post.title}</h3>
-      <p className='post-content'>{post.content.substring(0, 100)}</p>
-    </div>
+      <p>{post.content.substring(0, 100)}</p>
+      <Link to={`/posts/${post.id}`}>View Post</Link>
+    </article>
   ))
+
   return (
-    <div className='container'>
-      <h3>Post</h3>
-      {renderedPosts}
-    </div>
+    <>
+      <section>
+        <h2>Posts</h2>
+        {renderedPost}
+      </section>
+    </>
   )
 }
-
-export default PostList
+export default PostList 
