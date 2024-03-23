@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { PostAuthor } from './PostAuthor'
 
 export const SinglePostPage = () => {
 
@@ -18,6 +20,8 @@ export const SinglePostPage = () => {
       <section>
         <h2>{post.title}</h2>
         <p>{post.content}</p>
+        <p><PostAuthor userId={post.user} /></p>
+        <Link to={`/editPost/${post.id}`}>Edit Post</Link>
       </section>
     </>
   );

@@ -11,6 +11,7 @@ import store from './app/store'
 import AddPostForm from './features/posts/AddPostForm';
 import { SinglePostPage } from './features/posts/SinglePostPage';
 import { Navbar } from './app/Navbar';
+import { EditPostForm } from './features/posts/EditPostForm';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               )}
             />
             <Route exact path="/posts/:postId" component={SinglePostPage} />
+            <Route exact path="/editPost/:postId" component={EditPostForm} />
           </Provider>
           < Redirect to="/" />
         </Switch>
